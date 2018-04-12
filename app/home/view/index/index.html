@@ -1,0 +1,381 @@
+{include file="common/sheader"/}
+
+
+<div class="wrapper">
+	<aside>
+		<div class="loading">
+			<img src="__HOME__/images/loader.png" class="loader" title="{$sys.title}"
+				alt="{$sys.name}">
+		</div>
+	</aside>
+
+	<div id="top" class="home_firstarea">
+		<div class="home_slider">
+			{notempty name="adList1"}
+				{volist name="adList1" id="vo"}
+					<div class="cover" data-cover="__PUBLIC__{$vo.pic}" alt="{$vo.name}"></div>
+				{/volist}
+			{/notempty}
+			
+		</div>
+		<div class="home_slider home-txt">
+			{notempty name="adList1"}
+				{volist name="adList1" id="vo"}
+					<div class="cover">
+						<p>
+							<span class="bd-tl"></span>{$vo.content}<span class="bd-br"></span>
+						</p>
+					</div>
+				{/volist}
+			{/notempty}
+			
+		</div>
+		<div class="firstarea_overlay"></div>
+		<div class="firstarea_shadow"></div>
+		<div class="firstarea_title">
+			<div class="scroll_arrow">
+				<img src="__HOME__/images/icon_arr-down.png" alt="向下" width="22">
+			</div>
+		</div>
+		
+		{include file="common/header_menu"/}
+		<div class="sp_logo pjax">
+			<a href="/" title="{$sys.name}"><img src="__HOME__/images/logo-white.png" alt="{$sys.name}"></a>
+		</div>
+	</div>
+
+	<section>
+		<div class="blocktitle cf" id="second">
+			<h2>设计案列</h2>
+			<a href="{:url('/home/cases')}" class="block_t_btn pjax" title="查看全部">查看全部</a>
+		</div>
+		<!-- .blocktitle -->
+		<div class="design-list pjax cf">
+			<div class="design-bg">
+				<div class="design design1">
+					<div class="design-item">
+						<a href="{$adList11[0]['url']}" title="{$adList11[0]['name']}">
+							<div class="thumb">
+								<img class="thumb-img thumb-img1" src="__PUBLIC__/{$adList11[0]['pic']}" alt="{$adList11[0]['name']}">
+							</div>
+							<div class="caption trunc">
+								<p class="title">{$adList11[0]['name']}</p>
+								<p>
+									<span class="date">{$adList11[0]['content']}</span>
+								</p>
+							</div>
+						</a>
+					</div>
+					<div class="design-item">
+						<a href="{$adList11[1]['url']}" title="{$adList11[1]['name']}">
+							<div class="thumb">
+								<img class="thumb-img thumb-img1" src="__PUBLIC__/{$adList11[1]['pic']}" alt="{$adList11[1]['name']}">
+							</div>
+							<div class="caption trunc">
+								<p class="title">{$adList11[1]['name']}</p>
+								<p>
+									<span class="date">{$adList11[1]['content']}</span>
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="design design2">
+					<div class="design-item design-item2">
+						<a href="{$adList11[2]['url']}" title="{$adList11[2]['name']}">
+							<div class="thumb">
+								<img class="thumb-img thumb-img2" src="__PUBLIC__/{$adList11[2]['pic']}" alt="{$adList11[2]['name']}">
+							</div>
+							<div class="caption trunc">
+								<p class="title">{$adList11[2]['name']}</p>
+								<p>
+									<span class="date">{$adList11[2]['content']}</span>
+								</p>
+							</div>
+						</a>
+					</div>
+					<div class="design-item  design-item2">
+						<a href="{$adList11[3]['url']}" title="{$adList11[3]['name']}">
+							<div class="thumb">
+								<img  class="thumb-img thumb-img2" src="__PUBLIC__/{$adList11[3]['pic']}" alt="{$adList11[3]['name']}">
+							</div>
+							<div class="caption trunc">
+								<p class="title">{$adList11[3]['name']}</p>
+								<p>
+									<span class="date">{$adList11[3]['content']}</span>
+								</p>
+							</div>
+						</a>
+					</div>
+					<div style="clear:both;"></div>
+					<div class="design-item">
+						<a href="{$adList11[4]['url']}" title="{$adList11[4]['name']}">
+							<div class="thumb">
+								<img class="thumb-img thumb-img3" src="__PUBLIC__/{$adList11[4]['pic']}" alt="{$adList11[4]['name']}">
+							</div>
+							<!-- <div class="caption trunc">
+								<p class="title">硬汉推荐布艺沙发</p>
+								<p>
+									<span class="date">硬汉推荐布艺沙发</span>
+								</p>
+							</div> -->
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+		
+	<section>
+		<div class="blocktitle2 cf">
+			<h2>我家装修多少钱</h2>
+			<h3>10秒钟快速获得报价</h3>
+		</div>
+		<div class="budget cf">
+			<div class="b-cont-box">
+				<div class="c-cont-boxes form-wrapper" style="">
+					<h3>免费报价</h3>
+					<form class="form-wrapper" id="Form" method="POST">
+						<div class="c-cont-input clearfix">
+							<label class="c-cont-label fl">房屋面积：</label>
+							<i>㎡</i>
+							<input class="c-free-input fl" type="tel" name="area" onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="您房屋面积" required>
+							<span class="c-box-warning" id="area"></span>
+						</div>
+						<div class="c-cont-input clearfix">
+							<label class="c-cont-label fl">装修情况：</label>
+							<select class="c-free-input c-free-input-1-2 fl" name="room" required>
+									<option value="0" selected >0室</option>
+									<option value="1" selected >1室</option>
+									<option value="2">2室</option>
+									<option value="3">3室</option>
+									<option value="4">4室</option>
+									<option value="5">5室</option>
+									<option value="6">6室</option>
+									<option value="7">7室</option>
+									<option value="8">6室</option>
+									<option value="9">9室</option>
+									<option value="10">10室</option>
+							</select>
+
+							<select class="c-free-input c-free-input-1-2 fr" name="level" required>
+									<option value="1" >经济型</option>
+									<option value="2" selected>中档型</option>
+									<option value="3">高档型</option>
+							</select>
+							
+						</div>
+						<div class="c-cont-input clearfix">
+							<label class="c-cont-label fl">您的称呼：</label>
+							<input class="c-free-input fl" type="text" name="name" placeholder="您的称呼" required>
+							<span class="c-box-warning" ></span>
+						</div>
+						<div class="c-cont-input clearfix">
+							<label class="c-cont-label fl">手机号码：</label>
+							<input class="c-free-input fl" type="tel" onkeyup="this.value=this.value.replace(/\D/g,'')" name="mobile"  placeholder="手机号"  required >
+							<span class="c-box-warning" ></span>
+						</div>
+						<div class="c-cont-input clearfix">
+							<label class="c-cont-label fl">验证码：</label>
+							<input class="c-free-input c-free-input-1-2 fl" type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" name="code" placeholder="验证码"  required>
+							<span class="c-box-warning" id="bj_code"></span>
+							<input class="c-free-input c-free-input-1-2 mbtn fr" disabled type="button" id="codebut" value="获取验证码">
+						</div>
+						<div class="c-cont-input option-wrapper clearfix">
+							<input class="mbtn bj_btn w-mbtn"  type="submit" value="提交">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="blocktitle cf">
+			<h2>家居商城</h2>
+			<a href="{:url('/mall/mall')}" class="block_t_btn pjax" title="查看全部">查看全部</a>
+		</div>
+		<!-- .blocktitle -->
+		<ul class="article_list brand pjax cf">
+			{notempty name="adList10"}
+				{volist name="adList10" id="vo"}
+				<li>
+					<a href="{$vo.url}" target="_blank"
+					title="{$vo.name}">
+						<div class="thumb tx_center">
+							<img src="__HOME__/images/brand_logo.png" alt="{$vo.content}"><img
+								src="__PUBLIC__/{$vo.pic}" alt="{$vo.content}">
+							<div class="overlay">
+								<div class="more">{$vo.name}</div>
+							</div>
+						</div>
+						<div class="caption">
+							<p class="txt">{$vo.name}</p>
+						</div>
+					</a>
+				</li>
+				{/volist}
+			{/notempty}
+		</ul>
+	</section>
+
+	<section>
+			<div class="relative overflow-hidden">
+				<div class="blocktitle transp cf">
+					<h2>站内公告</h2>
+					<!-- <a href="/360web.html" class="block_t_btn pjax"
+						title="所有装修案例 装修效果图">查看全部</a> -->
+				</div>
+
+			
+				<div class="case_bg">
+					<div class="case_bgslider">
+						{notempty name="adList13"}
+							{volist name="adList13" id="vo"}
+							<div class="cover" data-cover="__PUBLIC__{$vo.pic}" alt="{$vo.name}"></div>
+							{/volist}
+						{/notempty}	
+					</div>
+				</div>
+				<div class="article_list case_slider tx_center pjax">
+
+				{notempty name="adList13"}
+					{volist name="adList13" id="vo"}
+					<div>
+						<a href="{$vo.url}" target="_blank" title="{$vo.name}">
+							<div class="thumb">
+								<img src="__PUBLIC__{$vo.pic}" alt="{$vo.name}" class="thumbimg">
+								<div class="overlay"></div>
+							</div>
+							<div class="caption">
+								<p>
+									<span class="cat"></span>
+								</p>
+								<p class="title">{$vo.name}</p>
+							</div>
+						</a>
+					</div>
+					{/volist}
+				{/notempty}	
+
+				</div>
+			</div>
+	</section>
+
+	<section>
+		<div class="section-quality relative cf">	
+			<ul class="quality-list ">
+
+			{notempty name="qualityList"}
+				{volist name="qualityList" id="vo"}
+				<li class="o">
+					<a href="#">
+					<span class="quality-circle"><em class="iconfont {$vo.icon}"></span></em><span class="title">{$vo.title}</span>
+					<p>{$vo.content}</p>
+					</a>
+				</li>
+				{/volist}
+			{/notempty}	
+				
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<!-- <div class="blocktitle cf">
+			<h2>服务流程</h2>
+		</div> -->
+		<!-- .blocktitle -->
+		<ul class="article_list store cf">
+			{notempty name="adList12"}
+				{volist name="adList12" id="vo"}
+				<li>
+					<a href="{$vo.url}" target="_blank" title="{$vo.name}">
+						<div class="thumb">
+							<div class="cover" data-cover="__PUBLIC__/{$vo.pic}" alt="{$vo.name}"></div>
+							<div class="overlay">
+								<div class="designercon">{$vo.name}</div>
+							</div>
+						</div>
+						<div class="caption">
+							<p class="title">{$vo.content}</p>
+						</div>
+					</a>
+				</li>
+				{/volist}
+			{/notempty}		
+		</ul>
+	</section>
+
+
+</div>
+
+
+
+<script>
+
+// 初始化
+	function loading(){
+		// alert();
+		$('.loading').fadeOut(500);
+		$('.home_firstarea .gnav a , .firstarea_title , .home_firstarea .logo.wh , .scroll_arrow').addClass('appr');
+		// if($('.access_map').length) mapInit();
+	}
+	$(".aplct-link").hover(function(){
+		$(".aplct-cont").slideToggle();
+	});
+
+	$(document).ready(function(){
+		loading();
+	})
+</script>
+
+
+<script>
+	$("[name='mobile']").bind('input propertychange',function(){
+		if(vpt($(this),'','请输入正确手机号码')){
+			$('#codebut').attr('disabled',false);
+		}else{
+			$('#codebut').attr('disabled',true);
+		}
+	})
+
+	//获取报价
+	$('#Form').submit(function(){
+		if (!vrg($("[name='area']"),'1','999','面积为1-999')) {return false};
+		if (!vpt($("[name='mobile']"),'','请输入正确手机号码')) {return false};
+		if (!vcd($("[name='code']"),'请输入正确验证码')) {return false};
+		$.ajax({
+            url:"{:url('Message/report')}",
+            data:$('#Form').serialize(),
+            type:'POST',
+            dataType:'JSON',
+            success:function(data){
+                if(data.code>0){
+                	$('#Form')[0].reset();
+                    alert(data.msg);
+                }else{
+                    alert(data.msg)
+                }
+            }
+             
+        })
+
+		return false;
+	})
+		
+
+	//获取验证码
+	$('#codebut').click(function(){
+
+		$.post("{:url('Message/sendCode')}",{mobile:$("[name='mobile']").val()},function(data){
+				if (data.code>0) {
+					sendCode(codebut,60);
+				}else{
+					alert(data.msg);
+				}
+		});
+	});
+
+</script>
+{include file="common/sfooter"/}

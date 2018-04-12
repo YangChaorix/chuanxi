@@ -1,0 +1,87 @@
+{include file="common/sheader"/}
+	{include file="common/header_menu"/}
+	<div class="header_space"></div>
+	<article class="contact-input">
+	  <div class="breadcrumb">
+	    <ul>
+	      <li><a href="/">首页</a></li>
+	      <li>{$cate.catname}</li>
+	    </ul>
+	  </div>
+	  <div class="pageheader">
+	    <div class="cover" data-cover="'__PUBLIC__/{$cate.image}'" style="transform: translateY(0px); background-image: url('__PUBLIC__/{$cate.image}');"></div>
+	    <div class="firstarea_overlay"></div>
+	    <header>
+	      <h1>{$cate.catname}</h1>
+	    </header>
+	  </div>
+	</article>
+
+	<div class="container">
+	  <div class="sub blocktitle cf">
+	    <!-- <h2 class="pc">首页</h2> -->
+	    <ul class="tab_list pjax">
+	      <li class="current">{$cate.catname}</li>
+	    </ul>
+	  </div>
+	  <div class="c-content  clearfix" >
+		<div class="c-sortbar clearfix">
+			<ul class="c-sortbar-left fl">
+				<li>
+					<a class="active" href="/company.html">综合排序</a>
+				</li>
+				<li>
+					<a href="/company.html?sort=1">点击量</a>
+				</li>
+				<li>
+					<a href="/company.html?sort=2">时间</a>
+				</li>
+				<!--<li><a href="#">签单量</a></li>-->
+			</ul>
+			<!-- <div class="c-sortbar-right fr">
+								<a href="/company.html?page=1"><i class="iconfont icon-zuo"></i></a>
+				<span>1/1</span>
+				<a class="c-you-btn" href="/company.html?page=1"><i class="iconfont icon-you"></i></a>
+			</div> -->
+		</div>
+			
+		<!--装修公司列表循环-->
+		{volist name="list" id="vo"}
+			<div class="c-cont-list clearfix">
+				<a class="c-complogo fl" href="{:url('active/detail',array('id'=>$vo['id']))}">
+					<img src="__PUBLIC__{$vo.thumb}" alt="{$vo.title}" onerror="javascript:this.src='__HOME__/images/default.jpg';">
+				</a>
+				<div class="c-comp-cont fl">
+					<a class="c-comp-name" href="{:url('active/detail',array('id'=>$vo['id']))}" style="{$vo.title_style}" >{$vo.title}</a>
+					<p class="c-renzheng clearfix">
+					<a href="/qualification/12.html" title="{$sys.name}"><i class="iconfont icon-v1"></i></a>
+						<a href="javascript:;" title="{$sys.name}"><i class="iconfont icon-v1"></i><!--20000元--></a>
+					</p>
+					<span class="c-comp-namea c-comp-l"><i class="iconfont icon-dizhi"></i> {$vo.keywords}</span>
+					<span class="c-comp-namea c-comp-l"><i class="iconfont icon-dizhi"></i>发布时间 {$vo.createtime|date="Y-m-d",###}</span>
+					
+				</div>
+				<div class="c-comp-right fr">
+					<p>
+						<span>活动类型</span>
+
+						<em>{$filter[0]['setup'][$vo.type]}</em>
+						<!-- <i class="iconfont icon-v1"></i> -->
+					</p>
+					<p><span class="c-comp-letter">报名人数</span><em>{$vo.register}</em></p>
+				</div>
+			</div>
+		{/volist}
+		<!--分页-->
+
+		<div class="page-foot">
+	          	{$page}
+	            <!-- <form action="" method="get" name="pageform">
+	            <span>共有数据 12 条</span> <a href="/anli.php?dc=12&p=1" title="列表首页">首页</a> <em>1</em> <a href="/anli.php?dc=12&p=1" title="列表尾页">尾页</a>    <span>跳转到</span><input class="page-foot-input" type="text" name="p" size="1"><span>页</span> <input class="page-foot-submit" type="submit" name="turnbutton" value="Go">
+	            </form> -->
+	    </div>
+				
+	 </div>
+
+	</div>  
+{include file="common/sfooter"/}

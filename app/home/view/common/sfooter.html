@@ -1,0 +1,71 @@
+		<footer>
+			<div class="footer yh-footer">
+				<div class="yh-footer-up clearfix">
+					<div class="yh-footer-left fl">
+						<img src="__PUBLIC__/{$sys.logo}" />
+					</div>
+					<div class="yh-footer-center fl clearfix">
+
+					{notempty name="footList"}
+						{volist name="footList" id="vo"}
+						<ul>
+							<li><span>{$key}</span></li>
+							
+							{volist name="vo" id="vo2"}
+							<li><a href="/home/article/{$vo2.catdir}/id/{$vo2.id}">{$vo2.title}</a></li>
+							{/volist}
+						</ul>
+						{/volist}
+					{/notempty}
+
+					</div>
+					<div class="yh-ewm fr">
+						<div class="ewm">
+						   <img src="__HOME__/images/weixin.png" alt="{$sys.name}" />
+							<span class="ewm-tips">免费装修小助手</span>
+						</div>
+
+						<div class="ewm">
+						   <img src="__HOME__/images/xiaochengxu.png" alt="{$sys.name} />
+							<span class="ewm-tips">免费装修小助手</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="yh-footer-link clearfix">
+					<span>合作商家：</span>
+					<ul>
+						{volist name="cooperateList" id="vo"}
+							<li><a href="{$vo.url}" target="_blank" title="{$vo.name}" ><img src="__PUBLIC__/{$vo.pic}" alt="{$vo.name}"></a></li>
+						{/volist}
+					</ul>
+				</div> -->
+				<div class="yh-footer-link-a clearfix">
+					<span>友情链接：</span>
+					<ul>
+						{volist name="linkList" id="vo"}
+							<li><a href="{$vo.url}" target="_blank" title="{$vo.name}" >{$vo.name}</a></li>
+						{/volist}
+					</ul>
+				</div>
+				<div class="yh-footer-down">© {$sys.copyright}{$sys.name} 版权所有
+						{$sys.bah}
+				</div>
+			</div>
+		</footer>
+		<aside>
+			<div class="sp_toggle">
+				<div class="sp_toggle_inner">
+					<span class="b1"></span> <span class="b2"></span> <span class="b3"></span>
+				</div>
+			</div>
+		</aside>
+	<!--[if lt IE 9]>
+    	<div class="browser_alert">您的浏览器不能正常显示我们网站的内容,<a href="http://browsehappy.com/" target="_blank">请升级到最新的浏览器
+	    </div>
+	<![endif]-->
+	<script src="__HOME__/js/plugins.js"></script>
+	<script src="__HOME__/js/script.js"></script>
+	<!-- 站长统计 -->
+	<script src="https://s13.cnzz.com/z_stat.php?id=1273340556&web_id=1273340556" language="JavaScript"></script>
+</body>

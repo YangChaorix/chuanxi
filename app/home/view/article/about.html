@@ -1,0 +1,59 @@
+{include file="common/sheader"/}
+	{include file="common/header_menu"/}
+	<div class="header_space"></div>
+	<article class="contact-input">
+	  <div class="breadcrumb">
+	    <ul>
+	      <li><a href="/">首页</a></li>
+	      <li>{$cate.catname}</li>
+	    </ul>
+	  </div>
+	  <div class="pageheader">
+	    <div class="cover" data-cover="'__PUBLIC__/{$cate.image}'" style="transform: translateY(0px); background-image: url('__PUBLIC__/{$cate.image}');"></div>
+	    <div class="firstarea_overlay"></div>
+	    <header>
+	      <h1>{$cate.catname}</h1>
+	    </header>
+	  </div>
+	</article>
+
+	<div class="container">
+	  <div class="sub blocktitle cf">
+	    <!-- <h2 class="pc">首页</h2> -->
+	    <ul class="tab_list pjax">
+	      <li class="current">{$cate.catname}</li>
+	    </ul>
+	  </div>
+
+		<div class="c-content clearfix">
+			<!--顶部导航  开始-->
+				<div class="c-nav clearfix c-nav-article">
+					<ul>
+						{volist name="list" id="vo"}
+						<li>
+							<a class="{if condition="$vo.id eq $id"}active{/if}" href="{:url('/home',array('article'=>$action,'id'=>$vo['id']))}">{$vo.title}</a>
+						</li>
+						{/volist}
+
+					</ul>
+				</div>
+			<!--顶部导航  结束-->
+			
+			<!--右边内容  开始-->
+			<div class="c-content">
+				<div class="house-huxing clearfix">
+					{$content}
+				</div>
+			</div>
+			<!--右边内容  结束-->
+		</div>
+			
+		<!--装修公司列表循环-->
+		
+		<!--分页-->
+
+				
+	 </div>
+
+	</div>  
+{include file="common/sfooter"/}

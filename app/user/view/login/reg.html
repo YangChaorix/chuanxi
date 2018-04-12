@@ -1,0 +1,114 @@
+{include file="home@common/sheader"/}
+{include file="home@common/header_menu"/}
+<link rel="stylesheet" type="text/css" href="__HOME__/css/login.css" /> 
+
+
+<!--内容开始-->
+<div class="r-box">
+	<div class="r-centent">
+		<!--头部-->
+		<div class="uls">
+			<ul class="r-tab">
+				<li class="active"><p>用户注册<!--<i></i>--></p></li>
+		  </ul>
+		</div>		
+		<!--选项卡-->
+		<div class="r-xuanxkuang">
+			<!--个人注册内容-->
+			<div class="r-zhuc">
+				<form  method="post" id="Form">
+					<div class="r-inps">
+						<div class="r-input-box">
+							<input type="tel" class="r-phon" name="mobile"  placeholder="请输入您常用的手机号" /><span class="warning w1"></span>
+						</div>
+						<div class="r-yanz r-div-kk l-input-box">
+							<input type="tel" class="r-yanzm fl" name="code" placeholder="请输入验证码" />
+							<input type="button" class="r-huoquyzm fr" id="codebut" disabled value="获取验证码" /><span class="warning w2"></span>		
+							
+						</div>
+						<div class="r-input-box">
+							<input type="password" class="r-pwd" name="password"  placeholder="请输入6~20位字符的初始密码"/><span class="warning w3"></span>
+						</div>
+						<div class="r-input-box">
+							<input type="password" class="r-pwd2" name="topassword"  placeholder="请输入确认密码"/><span class="warning w4"></span>
+						</div>
+						<div class="r-div-kk r-yiyou">
+							<div class="checkboxC3">
+								<input type="checkbox" class="r-anniu" id="radio1" /><label class="iconfont label-text" for="radio1"></label>
+							</div>
+							 <p>我已阅读，并同意<a href="#">《注册协议》</a></p> 
+						</div>
+						<input type="submit" class="r-sup" id="submit1" value="立即注册" disabled="disabled" ></input>
+						<div class="r-div-kk r-kk">
+							<a href="{:url('user/login/index')}">已有账号, 去登录</a>
+						</div>						
+					</div>
+				</form>
+			</div>
+		</div>		
+	</div>	
+</div>
+<!--内容结束-->
+<style>.l-copyright{color: #000;}</style>
+
+<script>
+	$('#radio1').click(function(){
+		if(this.checked) {
+			document.getElementById('submit1').disabled=false;
+		}else{
+			document.getElementById('submit1').disabled='disabled';
+		}
+	})
+
+	$($("[name='mobile']")).bind('input propertychange',function(){
+		if(vpt($(this),'','请输入正确手机号码')){
+			$('#codebut').attr('disabled',false);
+		}else{
+			$('#codebut').attr('disabled',true);
+		}
+	})
+
+	//获取验证码
+	$('#codebut').click(function(){
+		$.post("{:url('Home/Message/sendCode')}",{mobile:$("[name='mobile']").val()},function(data){
+				if (data.code>0) {
+					sendCode(codebut,60);
+				}else{
+					alert(data.msg);
+				}
+		});
+	});
+
+	//提交
+	$('#Form').submit(function(){
+		if (!vpt($("[name='mobile']"),'','请输入正确手机号码')) {return false};
+		if (!vcd($("[name='code']"),'请输入正确验证码')) {return false};
+		if (!vcd($("[name='password']"),'密码长度为6-20')) {return false};
+		if (!vpp($("[name='topassword']"),$("[name='password']"),'两次密码不一致')){return false};
+		$.ajax({
+            url:"{:url('Login/reg')}",
+            data:$('#Form').serialize(),
+            type:'POST',
+            dataType:'JSON',
+            success:function(data){
+                if(data.code>0){
+                	$('#Form')[0].reset();
+                    alert(data.msg);
+                }else{
+                    alert(data.msg)
+                }
+            }
+             
+        })
+
+		return false;
+	})
+</script>
+{include file="home@common/ssfooter"/} 
+
+
+
+
+
+
+

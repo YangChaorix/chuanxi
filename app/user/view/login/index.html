@@ -1,0 +1,94 @@
+{include file="home@common/sheader"/}
+{include file="home@common/header_menu"/}
+<link rel="stylesheet" type="text/css" href="__HOME__/css/login.css" /> 
+
+<style type="text/css">
+    body{background: url(__HOME__/images/login-bg.jpg) no-repeat; background-size: cover;}
+</style>
+
+<!--内容开始-->
+<div class="l-box">
+    <div class="l-centent">
+        <ul class="l-tab">
+            <li  class="active" ><p>账号登录<i></i></p></li>
+            <!-- <li ><p>手机动态码登录<i></i></p></li> -->
+        </ul>
+        <!--选项卡-->
+        <div class="xuanxkuang">
+            <!--账号登陆内容-->
+            <div class="xuanx"  >
+                <form action="" method="post" id="Form">
+                    <div class="inps">
+                        <div class="l-input-box">
+                            <input type="tel" class="inp"  value="" name="mobile" placeholder="请输入手机号" />
+                            <span class="warning"></span>
+                        </div>
+                        <div class="l-input-box">
+                            <input type="password" class="inp" name="password" placeholder="请输入密码" />
+                            <span class="warning"></span>
+                        </div>
+                    </div>
+                    <div class="zhao"><a href="{:url('user/login/reg')}" class="fl">没有账号? 去注册</a><a href="#" class="fr">忘记密码? 找回</a></div>
+                    <div class="log"><input class="mbtn" type="submit" name="submit" value="立即登录" /></div>
+                </form>
+            </div>
+            <!--快捷登录内容-->
+           <!--  <div class="xuanx"  style="display: none;" >
+                <form action="" method="post" id="Form" >
+                <div class="inps">
+                    <div class="l-input-box">
+                        <input type="text" class="inp" iname="mobile" value="" placeholder="请输入手机号" />
+                        <span class="warning"></span>
+                    </div>
+                    <div class="l-input-box">
+                        <input type="text" class="inp l-logincode"  name="code" placeholder="请输入动态码" />
+                        <input class="l-huoqud l-getcode" type="button" id="codebut"  value="获取动态码" />
+                        <span class="warning"></span>
+                    </div>
+                </div>
+                <div class="log"><input class="mbtn" type="submit" name="submit" value="立即登录" /></div>
+                </form>
+            </div> -->
+            <!--其他方式登录-->
+                <!--<div class="qit">
+                    <p>其他方式登录</p>
+                    <div class="qit-tu-kuang">
+                        <a href="/index/login/wxlogin.html" ><div class="qit-tu"> <img src="/images/weixin.png"/></div></a>
+                        <a href="/index/login/qqlogin.html" ><div class="qit-tu"><img src="/images/qq.png"/></div></a>
+                        <a href="/index/login/wblogin.html" ><div class="qit-tu"><img src="/images/weiBo.png"/></div></a>
+                    </div>          
+                </div>-->
+        </div>  
+        
+    </div>
+</div>
+
+
+<script>
+    $('#Form').submit(function(){
+        if (!vpt($("[name='mobile']"),'','请输入正确手机号码')) {return false};
+        if (!vcd($("[name='password']"),'密码长度为6-20')) {return false};
+
+        $.ajax({
+            url:"{:url('Login/index')}",
+            data:$('#Form').serialize(),
+            type:'POST',
+            dataType:'JSON',
+            success:function(data){
+                if(data.code>0){
+                    $('#Form')[0].reset();
+                    alert(data.msg);
+                    location.reload()
+                }else{
+                    alert(data.msg)
+                }
+            }  
+        })
+
+
+        return false;
+    })
+</script>
+
+
+{include file="home@common/ssfooter"/} 

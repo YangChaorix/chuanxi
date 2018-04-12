@@ -1,0 +1,121 @@
+{include file="home@common/uheader"/}
+{include file="home@common/header_menu"/}
+
+	<!--导航 开始-->
+	<div class="u-container clearfix">
+		<a class="u-open-leftnav" href="javascript:;"><i class="iconfont icon-caidan"></i></a>
+		{include file="home@common/lefter_menu"/}
+
+		<div class="u-contright fr">
+			{block name="main"}
+				<!--主体 开始-->
+				<div class="mmain clearfix" >
+					<div class="mcasetit clearfix">
+						<h3 class="fl"  >基本信息</h3>
+					</div>
+					<div class="up-img-cover u-user-photo">
+						<div class="mcase">
+						<div class="madd-caseimg clearfix">
+							<div class="up-img-cover"  id="up-img-touch" >
+					    		<p><img class="am-circle" alt="点击图片上传" src="{:imgUrl($userInfo['head_pic'])}" onerror="this.src='/images/default1.png'" /></p>
+					    		<!--<a class="meditpt" href="javascript:;">上传头像</a>-->
+					    		<input class="mbtnphoto meditpt" type="submit" name="picsub" id="picsub" value="上传头像" />
+					    	</div>		
+						</div>
+					</div>
+					</div>
+
+					<div class="minfo">
+						<form action="" id="form1" method="post">
+						<div class="minput">
+							<label>用户名：</label><input class="mipt" type="text" name="nickname" value="" placeholder="请输入用户名，用户名只能设置一次" required data-msg-required="用户名不能为空，且只能设置一次" />
+						</div>
+						<div class="minput">
+							<label>*昵 称：</label><input class="mipt" type="text" name="nickname" value="传禧" placeholder="请输入昵称" required data-msg-required="昵称不能为空" />
+						</div>
+						<div class="minput">
+							<label>*性 别：</label>
+							<input class="u-sex" type="radio" name="sex" value="1"  required />男
+							<input class="" type="radio" name="sex" value="2"  checked  />女
+							<input class="" type="radio" name="sex" value="0"  />保密
+						</div>
+						<div class="minput">
+							<label>*出生日期：</label><input class="mipt" type="text" name="birthday" id="birthday" value="2017-07-12" placeholder="请选择日期"  onfocus="this.blur()" required/>
+						</div>
+
+						<div class="minput">
+							<input class="mbtn u-mgl-115" type="submit" name="submit" value="提交" />
+						</div>
+						</form>
+					</div>
+				</div>
+
+
+				<!--上传头像插件 开始-->
+				<div class="am-modal am-modal-no-btn up-modal-frame" tabindex="-1" id="up-modal-frame">
+					<div class="am-modal-dialog up-frame-parent up-frame-radius">
+						<div class="am-modal-hd up-frame-header">
+						    <label>上传头像</label>
+						    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+						</div>
+						<div class="am-modal-bd  up-frame-body">
+						    <div class="am-g am-fl">
+						      	<div class="am-form-group am-form-file">
+							        <div class="am-fl">
+							            <button type="button" class="am-btn am-btn-default am-btn-sm">选择头像照片</button>
+							        </div>
+							        <input type="file" class="up-img-file" name="file">
+							   	</div>
+						    </div>
+						    <div class="am-g am-fl">
+						      	<div class="up-pre-before up-frame-radius">
+						      		<img alt="" src="" class="up-img-show" id="up-img-show" >
+						      	</div>
+							    <div class="up-pre-after up-frame-radius">暂无预览</div>
+						    </div>
+						    <div class="am-g am-fl">
+				   				<div class="up-control-btns">
+				    				<span class="fl" id="up-btn-left">左旋转</span>
+				    				<span class="fl" id="up-btn-right">右旋转</span>
+				    				<span class="fl up-btn-ok" url="{:url('user/avatar')}" parameter="{width:'300',height:'300'}">保存头像</span>
+				   				</div>
+					    	</div>
+						      
+						</div>
+					</div>
+				</div>
+    	
+				<!--头像加载框 开始-->
+				<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="up-modal-loading">
+					<div class="am-modal-dialog">
+						<div class="am-modal-hd">正在上传...</div>
+					    <div class="am-modal-bd">
+					        <span class="am-icon-spinner am-icon-spin"></span>
+					    </div>
+					</div>
+				</div>
+				<!--头像加载框 结束-->
+		
+				<!--头像上传警告框 开始-->
+				<div class="am-modal am-modal-alert" tabindex="-1" id="up-modal-alert">
+					<div class="am-modal-dialog">
+					    <div class="am-modal-hd">信息</div>
+					    <div class="am-modal-bd"  id="alert_content">成功了</div>
+					    <div class="am-modal-footer">
+					        <span class="am-modal-btn">确定</span>
+					    </div>
+					</div>
+				</div>
+				<!--头像上传警告框 结束-->
+
+				<script src="__USER__/js/amazeui.min.js"></script>
+				<script src="__USER__/js/cropper.min.js"></script>
+				<script src="__USER__/js/custom_up_img.js"></script>
+				<script src="__USER__/js/jquery.validate.js"></script>
+
+			{/block}
+		</div>
+	</div>
+
+{include file="home@common/ufooter"/}
+

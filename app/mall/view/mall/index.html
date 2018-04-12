@@ -1,0 +1,133 @@
+{include file="home@common/sheader"/}
+	{include file="home@common/header_menu"/}
+	<link rel="stylesheet" href="__HOME__/swiper/css/swiper.min.css">
+		
+	<div class="container c-main">
+		<!--主体 开始-->
+		<div class="mall">
+			<div class="mall-top-info clearfix">
+				<a href="#" class="mall-logo fl"><img src="/public/static/home/images/logo-black.png" alt="家居超市" /></a>
+				<div class="mall-search fl">
+					<input class="mall-search-input" type="text" name="search" placeholder="请输入关键字搜索">
+					<input class="sb-search-submit" type="submit" name="search" id="search" value="" />
+					<i class="sb-icon-search iconfont icon-sousuo"></i>
+				</div>
+				<div class="mall-cart fr">
+					<a href="#">
+						<em class="iconfont icon-cart3"></em>					
+						<i class="icon icon-amount">1</i>
+					</a>
+				</div>		
+			</div>
+			<div class="mall-nav clearfix">
+				<ul>
+					<li class="active"><a href="#">首页<i></i></a></li>
+					<li><a href="#">新品秒杀<i></i></a></li>
+					<li><a href="#">夏日钜惠<i></i></a></li>
+					<li><a href="#">全屋套餐<i></i></a></li>
+					<li><a href="#">个性定制<i></i></a></li>
+					<li><a href="#">卧室专区<i></i></a></li>
+					<li><a href="#">客餐专区<i></i></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="mall-banner swiper-container" id="swiper1">
+			    <!-- Swiper -->
+		        <div class="swiper-wrapper">
+
+		        	{volist name="adList1" id="vo"}
+		            	<div class="swiper-slide"><a href="{$vo.url}" target="_blank"><img src="__PUBLIC__{$vo.pic}" alt="{$vo.name}" /></a></div>
+					{/volist}
+		        </div>
+		        <!-- Add Pagination -->
+		        <div class="swiper-pagination swiper-pagination-white"></div>
+		        <!-- Add Arrows -->
+		        <div class="swiper-button-next swiper-button-white"></div>
+		        <div class="swiper-button-prev swiper-button-white"></div>
+		</div>
+
+		<div class="c-content">
+			<div class="mall-recommend">
+				<h3 class="mall-tit">精选搭配<i></i></h3>
+				<div class="mall-ad clearfix">
+
+					{volist name="adList2" id="vo"}
+						<a href="{$vo.url}" class="mall-adimg fl" target="_blank"><img src="__PUBLIC__{$vo.pic}" alt="{$vo.name}" /></a>
+					{/volist}
+				</div>
+			</div>
+			<div class="mall-recommend">
+				<h3 class="mall-tit">精品推荐<i></i></h3>
+				<div class="mall-recom clearfix">
+					<ul>
+
+					{volist name="bestList" id="vo"}
+						<li>
+							<a href="{:url('mall/detail',array('id'=>$vo.id))}" class="mall-re-img"><img src="__PUBLIC__/{$vo.thumb}" alt="{$vo.title}" /></a>
+							<a href="#" class="mall-re-name">{$vo.title}</a>
+							<p class="mall-re-intro">{$vo.keywords}</p>
+							<p class="mall-re-price">￥ <em>{$vo.price}</em> 起</p>
+						</li>
+					{/volist}	
+					</ul>
+				</div>
+			</div>
+			<div class="mall-ad-h">
+				
+				{notempty name="adList3"}
+				    <div class="swiper-container" id="swiper2">
+				        <div class="swiper-wrapper">
+							{volist name="adList3" id="vo"}
+				            	<div class="swiper-slide"><a href="{$vo.url}" class="mall-adimg fl" target="_blank"><img src="__PUBLIC__{$vo.pic}" alt="{$vo.name}" /></a></div>
+							{/volist}
+				        </div>
+				    </div>
+				{/notempty}
+				
+			</div>
+
+			{volist name="dataList" id="v"}
+				{notempty name="v.list"}
+					<div class="mall-recommend">
+						<h3 class="mall-tit">{$v.catname}<i></i></h3>
+						<div class="mall-recom clearfix">
+							<ul>
+								{volist name="v.list" id="vo"}
+								<li>
+									<a href="{:url('mall/detail',array('id'=>$vo.id))}" class="mall-re-img"><img src="__PUBLIC__/{$vo.thumb}" alt="{$vo.title}" /></a>
+									<a href="#" class="mall-re-name">{$vo.title}</a>
+									<p class="mall-re-intro">{$vo.keywords}</p>
+									<p class="mall-re-price">￥ <em>{$vo.price}</em> 起</p>
+								</li>
+								{/volist}	
+							</ul>
+						
+						</div>
+					</div>
+				{/notempty}
+			{/volist}
+
+		</div>
+	</div>
+
+
+	<script src="__HOME__/swiper/js/swiper.min.js"></script>
+
+	<script>
+		var swiper = new Swiper('#swiper1', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: '.swiper-pagination',
+	        nextButton: '.swiper-button-next',
+	        prevButton: '.swiper-button-prev',
+	        spaceBetween: 30,
+	        loop:true,
+	        autoplay: 2500,
+	    });
+
+	    var swiper2 = new Swiper('#swiper2', {
+	        spaceBetween: 30,
+	        loop:true,
+	        autoplay: 2500,
+	    });
+	</script>
+{include file="home@common/sfooter"/}

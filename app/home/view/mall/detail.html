@@ -1,0 +1,161 @@
+{include file="common/sheader"/}
+	{include file="common/header_menu"/}
+    <div class="c-main c-house">
+        <div class="house-top">   
+          <div class="c-content house-content clearfix">
+            <h3 class="house-info">商品信息</h3>
+                <div class="house-lp fl">
+                        <div class="large_box">
+                          <ul>  
+                            {notempty name="pics"}
+                              {volist name="pics" id="vo"}
+                                <li>
+                                    <img src="__PUBLIC__/{$vo}" alt="{$title}" title="{$title}">
+                                </li>
+                              {/volist}
+                              {else /}
+                                <li>
+                                    <img src="__PUBLIC__/{$thumb}" alt="{$title}" title="{$title}" >
+                                </li>
+                            {/notempty}                  
+                          </ul>
+
+                        </div>
+                        <div class="small_box">
+                            <span class="btn left_btn"></span>
+                            <div class="small_list">
+                                <ul>
+                                  {notempty name="pics"}
+                                    {volist name="pics" id="vo"}
+                                    <li >
+                                        <img src="__PUBLIC__/{$vo}" width="110" height="73" alt="{$title}"  title="{$title}">
+                                        <div class="bun_bg"></div>
+                                    </li>
+                                    {/volist}
+                                  {else /}
+                                    <li >
+                                        <img src="__PUBLIC__/{$thumb}" width="110" height="73"  alt="{$title}" title="{$title}">
+                                        <div class="bun_bg"></div>
+                                    </li>     
+                                  {/notempty} 
+                                                                                       
+                                </ul>
+                            </div>
+                            <span class="btn right_btn"></span>
+                        </div>
+                </div>
+                <div class="house-cont fl">
+                    <h3 class="house-title">{$title}</h3>
+                    <p class="house-price1">价格：<em>{$price}元</em></p>
+                    <p class="house-features"><em>{$keywords}</em></p>
+                    <p class="house-detail"><span>简介：{$description}</span></p>
+                    <p class="house-sale">销售状态：<em>无货</em></p>
+                    <div class="c-btn-yuyue c-btn-yy">
+                      <a class="c-btn-a c-btn-a1 dis fl" sid="{$id}" href="javascript:;">加入购物车</a><a class="c-btn-a c-btn-a2 dis fl" sid="{$id}" href="javascript:;">立即预定</a>
+                    </div>
+                    <!-- <p class="house-optime">开盘时间：2015-11-07</p>
+                    <p class="house-sale">交房时间：2019-12-01</p> -->
+                    <!-- <p class="house-opentime house-optime"><em class="house-time">所在区域</em><em class="house-em">：花溪区</em></p>
+                    <p class="house-opentime"><em class="house-company">开发商</em><em class="house-em">：贵阳凯宏房地产开发有限公司</em></p>
+                    <p class="house-opentime"><em class="house-time">详细地址</em><em class="house-em">：花溪大道中曹司站（十里河滩旁）</em></p>     -->        
+                </div>
+          </div>
+        </div>
+        <div class="c-content">
+          <h3 class="c-cases-title house-titles"><i></i>商品详情</h3>
+          <div class="house-huxing clearfix">
+            {$content}
+          </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/search_classie.js"></script>
+    <script type="text/javascript" src="__HOME__/js/uisearch.js"></script>
+    <script type="text/javascript" src="__HOME__/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="__HOME__/js/carousel.min.js"></script>
+    <script type="text/javascript" src="__HOME__/js/jquery.event.drag.js"></script>
+    <script type="text/javascript" src="__HOME__/js/jquery.touchSlider.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".img_gallery").hover(function(){
+    $("#btn_prev,#btn_next").fadeIn()
+  },function(){
+    $("#btn_prev,#btn_next").fadeOut()
+  });
+  
+  $dragBln = false;
+  
+  $(".main_img").touchSlider({
+    flexible : true,
+    speed : 200,
+    btn_prev : $("#btn_prev"),
+    btn_next : $("#btn_next"),
+    paging : $(".point a"),
+    counter : function (e){
+      $(".point a").removeClass("on").eq(e.current-1).addClass("on");//图片顺序点切换
+      $(".img_font span").hide().eq(e.current-1).show();//图片文字切换
+    }
+  });
+  
+  $(".main_img").bind("mousedown", function() {
+    $dragBln = false;
+  });
+  
+  $(".main_img").bind("dragstart", function() {
+    $dragBln = true;
+  });
+  
+  $(".main_img a").click(function(){
+    if($dragBln) {
+      return false;
+    }
+  });
+  
+  timer = setInterval(function(){
+    $("#btn_next").click();
+  }, 5000);
+  
+  $(".img_gallery").hover(function(){
+    clearInterval(timer);
+  },function(){
+    timer = setInterval(function(){
+      $("#btn_next").click();
+    },5000);
+  });
+  
+  $(".main_img").bind("touchstart",function(){
+    clearInterval(timer);
+  }).bind("touchend", function(){
+    timer = setInterval(function(){
+      $("#btn_next").click();
+    }, 5000);
+  });
+  
+  
+  $(".c-lists a").hover(function(){
+    $(this).parent().toggleClass("active");
+  });
+  
+  });
+</script>
+
+
+<script type="text/javascript">
+    $(function(){
+        $(".house-lp").thumbnailImg({
+            large_elem: ".large_box",
+            small_elem: ".small_list",
+            left_btn: ".left_btn",
+            right_btn: ".right_btn"
+        });
+        $(".house-huxing ul li").hover(function(){
+      $(this).toggleClass("active");
+    });
+    });
+</script>
+
+
+{include file="common/sfooter"/}

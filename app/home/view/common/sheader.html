@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>{if condition="$info['title']"}{$info.title}{elseif condition="$title" /}{$title}{else}{$sys.title}{/if}-{$sys.name}</title>
+	<meta name="keywords" content="{if condition="$info['keywords']"}{$info.keywords}{elseif condition="$keywords" /}{$keywords}{else}{$sys.key}{/if}" />
+	<meta name="description" content="{if condition="$info['description']"}{$info.description}{elseif condition="$description" /}{$description}{else}{$sys.des}{/if}" />
+
+	<link rel="stylesheet" href="__HOME__/css/main.css">
+	<link rel="stylesheet" href="__HOME__/css/sb.css">
+	<link rel="stylesheet" href="__HOME__/css/iconfont.css">
+	<link rel="stylesheet" href="__HOME__/css/company.css">
+
+	
+	<script src="__HOME__/js/jquery-2.1.4.min.js"></script>	
+	<link rel="shortcut icon" href="favicon.ico">
+	
+</head>
+<body>
+	<div id="fb-root"></div>

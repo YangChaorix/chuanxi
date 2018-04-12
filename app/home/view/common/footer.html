@@ -1,0 +1,134 @@
+	<div class="yh-footer">
+		<div class="yh-footer-up clearfix">
+			<div class="yh-footer-left fl">
+				<img src="/images/logo-footer.png" />
+			</div>
+			<div class="yh-footer-center fl clearfix">
+				<ul>
+					<li><span>关于硬汉</span></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">企业文化</a></li>
+					<li><a href="#">新闻中心</a></li>
+					<li><a href="#">新手帮助</a></li>
+				</ul>
+				<ul>
+					<li><span>服务支持</span></li>
+					<li><a href="#">服务保障</a></li>
+					<li><a href="#">用户协议</a></li>
+					<li><a href="#">装修公司协议</a></li>
+					<li><a href="#">售后保障</a></li>
+				</ul>
+				<ul>
+					<li><span>商业合作</span></li>
+					<li><a href="#">装修公司合作</a></li>
+					<li><a href="#">渠道合作</a></li>
+					<li><a href="#">监理入驻</a></li>
+				</ul>
+			</div>
+			<div class="yh-ewm fr">
+				<img src="/images/myyimu-weixin-ewm.jpg" /> <img
+					src="/images/manlm-erweimaweibo.jpg" />
+			</div>
+		</div>
+		<div class="yh-footer-down">©2017 manlm.com 硬汉互联网家平台 黔 ICP 备
+			15013009 号</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="__HOME__/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/search_classie.js"></script>
+<script type="text/javascript" src="__HOME__/js/uisearch.js"></script>
+<script type="text/javascript" src="__HOME__/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="__HOME__/js/carousel.min.js"></script>
+<script type="text/javascript" src="__HOME__/js/jquery.event.drag.js"></script>
+<script type="text/javascript" src="__HOME__/js/jquery.touchSlider.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('.c-menu-select li a').click(function(){
+        $(this).parent().addClass("active").siblings().removeClass("active");
+    });
+    $('.c-cont-list').hover(function(){
+        $(this).toggleClass("active");
+    });
+});
+new UISearch( document.getElementById( 'sb-search' ) );
+
+</script>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$(".img_gallery").hover(function(){
+			$("#btn_prev,#btn_next").fadeIn()
+		},function(){
+			$("#btn_prev,#btn_next").fadeOut()
+		});
+		
+		$dragBln = false;
+		
+		$(".main_img").touchSlider({
+			flexible : true,
+			speed : 200,
+			btn_prev : $("#btn_prev"),
+			btn_next : $("#btn_next"),
+			paging : $(".point a"),
+			counter : function (e){
+				$(".point a").removeClass("on").eq(e.current-1).addClass("on");//图片顺序点切换
+				$(".img_font span").hide().eq(e.current-1).show();//图片文字切换
+			}
+		});
+		
+		$(".main_img").bind("mousedown", function() {
+			$dragBln = false;
+		});
+		
+		$(".main_img").bind("dragstart", function() {
+			$dragBln = true;
+		});
+		
+		$(".main_img a").click(function(){
+			if($dragBln) {
+				return false;
+			}
+		});
+		
+		timer = setInterval(function(){
+			$("#btn_next").click();
+		}, 5000);
+		
+		$(".img_gallery").hover(function(){
+			clearInterval(timer);
+		},function(){
+			timer = setInterval(function(){
+				$("#btn_next").click();
+			},5000);
+		});
+		
+		$(".main_img").bind("touchstart",function(){
+			clearInterval(timer);
+		}).bind("touchend", function(){
+			timer = setInterval(function(){
+				$("#btn_next").click();
+			}, 5000);
+		});
+		
+		
+		$(".c-lists a").hover(function(){
+			$(this).parent().toggleClass("active");
+		});
+		
+	});
+</script>
+
+
+<script type="text/javascript">
+	$(function(){
+		$(".house-li ul li").hover(function(){
+			$(this).toggleClass("active");
+		});
+	});
+</script>
+
+</html>

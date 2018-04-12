@@ -1,0 +1,112 @@
+{include file="common/sheader"/}
+	{include file="common/header_menu"/}
+
+			<div class="mall-detail">
+ 
+          <div class="designer-posit">aaaa</div>
+          <div class="det-list">
+            
+            <div class="det-tit clearfix">
+              <div class="detail-proimg fl">
+                <div id="MagnifierWrap2">
+                  <div class="MagnifierMain"> <img class="MagTargetImg" src="b"> </div>
+                  <span class="spe_leftBtn">&lt;</span> <span class="spe_rightBtn">&gt;</span>
+                  <div class="spec-items">
+                    <ul>
+                      
+                          <li class="on"><img src=""></li>
+                      
+                          <li><img src=""></li>
+                       
+                    </ul>
+                  </div>
+               </div>   
+              </div>
+              <div class="detail-proinfo fl">
+                <form action="/mall/order.php" method="get">
+                  <h3></h3>
+                  <ul>
+                    <li class="clearfix"> <span>商家</span> <a href="Shop.php?id=">cc</a> </li>
+                    <li class="clearfix"><span>价格</span><span class="shop-price">333 <em>¥</em></span> <span class="original-price"><em>¥</em></span><span class="shop-price"> <em>¥</em></span> </li>
+                    <li class="clearfix"> <span>累计评价</span> <span>
+                     
+                      </span> </li>
+                    <!--<li class="clearfix"><span>规格</span></li>-->
+                    <li class="clearfix"> <span>数量</span> <span>
+                      <input type="hidden" name="id" id="id" value="">
+                      <input type="hidden" name="sid" id="sid" value="">
+                      <input type="hidden" name="RefreshPost" value="">
+
+                          
+                      <input type="text" class="hasnogoods" name="" disabled="disabled" id="numbers" value="没货了">
+                  
+                      <a href="javascript:;" class="goods-pm-btn" id="minus"><i class="icon-fontsz">-</i></a>
+                      <input type="number" style="IME-MODE: disabled;" onkeyup="this.value=this.value.replace(/\D/g,'1');this.value=this.value.replace(/\D/g,'1');if(this.value==''){this.value=1;}if(this.value>parseInt()){this.value=parseInt();}"  onafterpaste="this.value=this.value.replace(/\D/g,'1');this.value=this.value.replace(/\D/g,'1');if(this.value==''){this.value=1;}if(this.value>parseInt()){this.value=parseInt();}" name="Number" id="number" value="1" readonly>
+                      <a href="javascript:;" class="goods-pm-btn" id="add"><i class="icon-fontsz">+</i></a>
+              
+                      <em>件</em></span><span class="goods-cucun">库存：
+                      <label id="stockcount"></label>
+                      件</span> </li>
+                  </ul>
+                  <!-- <div class="mall-goods-btn">
+                    <button class="mall-goods-buy btn-default"  <?php if(!isset($_SESSION['userid']) or $_SESSION['userid']<0){echo 'type="button" '.'onclick="nologin()"'; }else{echo 'type="submit"';} ?>  id="buy" <?php if($StockCount<=0){echo 'disabled="disabled"'; } ?>>立即购买</button>
+                    <button class="mall-goods-addcart btn-default btnCart" <?php if(!isset($_SESSION['userid']) or $_SESSION['userid']<0){echo 'type="button" '.'onclick="nologin()"'; }?> goodsid="<?php echo $id; ?>" shopid="<?php echo $ShopID; ?>" type="button" id="shopping_cart" <?php if($StockCount<=0){echo 'disabled="disabled"'; } ?>><i class="iconfont icon-gouwuche1"></i>加入购物车</button>
+                    <span id="nostock"></span>
+                  </div> -->
+                </form>
+              </div>
+            </div>
+           
+            <div class="goods-info clearfix">
+                <div class="goods-sidebar fl">
+                	<div class="guess-goods">
+                    	<h3>猜你喜欢</h3>
+                        <ul>
+                        	
+                          <li>
+                            <div class="goods-img"><a href=""><img src=""></a></div>
+                            <div class="goods-name"><a href="eee">ddd</a></div>
+                            <div class="goods-price"> <span class="shop-price"> <em>¥</em></span> </div>
+                          </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="demo fr">
+                  <ul class="tabbtn" id="normaltab">
+                    <li class="current color1"><a href="javascript:void(0)">商品详情</a></li>
+                    <li class="color1"><a href="javascript:void(0)">商品参数</a></li>
+                    <li class="color1"><a href="javascript:void(0)">商品评价</a></li>
+                  </ul>
+                  <div class="tabcon" id="normalcon">
+                    <div class="sublist " id="ECS_tree1_BODY">              
+                      <div class="det-tit">
+                        <div></div>
+                      </div>
+                    </div>
+                    <div class="sublist">
+                    	<div class="det-tit info-goods-list clearfix">
+                        	<ul>
+                            	<li><span>分类：</span><span></span></li>
+                                <li><span>型号：</span><span></span></li>
+                                <li><span>品牌：</span><span></span></li>
+                                <li><span>生产厂家：</span><span></span></li>
+                                <li><span>材质：</span><span></span></li>
+                                <li><span>颜色：</span><span></span></li>
+                                <li><span>计量单位：</span><span></span></li>
+                                <li><span>重量：</span><span></span></li>
+                            </ul>
+                      </div>
+                    </div>
+                    <div class="sublist">
+                    </div>
+                  </div> 
+                  <div id="scorediv">
+                  
+                  </div>       
+                </div>   
+            </div>
+          </div>
+        </div>
+
+{include file="common/sfooter"/}

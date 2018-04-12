@@ -1,0 +1,48 @@
+{include file="common/sheader"/}
+	{include file="common/header_menu"/}
+    <div class="c-main c-house">
+        <div class="house-top">   
+          <div class="c-content house-content clearfix">
+            <h3 class="house-info">活动信息</h3>
+                <div class="house-cont active-cont">
+                    <h3 class="house-title">{$title}</h3>
+                    <p class="house-price1"><em>{$keywords}</em></p>
+                    <p class="house-features h_em">活动类型：<em>{$filter[0]['setup'][$type]}</em></p>
+                    <p class="house-detail"><span>活动简介：{$description}</span></p>
+                    <p class="house-sale">活动状态：<em>报名中</em></p>
+                    <p class="house-optime">开始时间：{$createtime|date="Y-m-d",###}</p>
+                    <p class="house-sale">结束时间：{$endtime|date="Y-m-d",###}</p>
+                    <!-- <p class="house-opentime house-optime"><em class="house-time">所在区域</em><em class="house-em">：花溪区</em></p>
+                    <p class="house-opentime"><em class="house-phon">联系电话</em><em class="house-em" style="margin-left: 0 !important;">：0851-85942729</em></p>               
+                    <p class="house-opentime"><em class="house-company">开发商</em><em class="house-em">：贵阳凯宏房地产开发有限公司</em></p> -->
+                    <p class="house-sale">报名人数：<em class="register-count">{$register}</em></p>
+
+                    <div class="c-btn-yuyue c-btn-yy">
+                      <a class="c-btn-a c-btn-a2 fl {$disabled}" data-value="{$id}"  href="javascript:;">{if condition="$disabled eq 'disabled'"}已报名{else /}立即报名{/if}</a>
+                    </div>                
+                </div>
+
+          </div>
+        </div>
+        <div class="c-content">
+          <h3 class="c-cases-title house-titles"><i></i>活动详情</h3>
+          <div class="house-huxing clearfix">
+            {$content}
+          </div>
+        </div>
+    </div>
+
+    <script>
+    $('.c-btn-a').on('click',function(){
+      if ($(this).text()=='已报名') {return false;}
+      var id=$(this).attr('data-value');
+      $.post('{:url("Active/sign")}',{id:id},function(data){
+        if (data.code>0) {
+          $('.c-btn-a').addClass('disabled').html(data.msg);
+          $('.register-count').text(parseInt($('.register-count').text())+1);
+        }
+        alert(data.msg)
+      })
+    })
+    </script>
+{include file="common/sfooter"/}

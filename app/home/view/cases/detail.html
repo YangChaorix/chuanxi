@@ -1,0 +1,80 @@
+{include file="common/sheader"/}
+	{include file="common/header_menu"/}
+	<link rel="stylesheet" href="__HOME__/swiper/css/swiper.min.css">
+	<div class="container">
+		<div class="c-main c-company">
+			<!--装修公司头部   开始-->
+			<div class="c-menu">
+				<!-- <div class="c-column clearfix">
+					<div class="c-sider fl">
+						<img class="c-comp-logo"  src="/uploads/\uploads\20170813\f0916f9f9be0d5e1be81e6239014bd44.png" onerror="javascript:this.src='/images/default.png';" />
+					</div>
+					<div class="c-center fl">
+						<b class="c-name c-top-name">贵州壹木浮生装饰工程有限公司</b>
+						<p class="c-renzheng">我们不想改变世界，我们只想让装修更简单</p>
+					</div>
+					<div class="c-nav fl clearfix">
+						<ul>
+							<li><a href="/detail/10.html">首页</a></li>
+							<li><a href="/about/10.html">公司简介</a></li>
+							<li><a href="/panoramic/10.html">720°全景展示</a></li>
+							<li><a class="active"  href="/cases/10.html">案例展示</a></li>
+							<li><a href="/team/10.html">设计团队</a></li>
+							<li><a href="#">业主点评</a></li>
+						</ul>
+					</div>
+					<div class="c-tel fr">
+						<a class="c-tel-num" href="javascript:;"><i class="iconfont icon-shouji"></i>400-818-8818</a>
+					</div>
+				</div> -->
+			</div>
+			<!--装修公司头部  结束-->
+			<div class="c-content clearfix">
+				<div class="img_gallery fl">
+					<div class="main_img">
+						<li><img src="__PUBLIC__/{$thumb}" class="img_1" alt="{$title}"></li>
+					</div>
+				</div>
+				<div class="c-info fl">
+					<div class="c-center c-companyname clearfix">
+						<b class="c-name c-cases-name">{$title}</b>
+						<!-- <p class="c-renzheng c-rzcases">
+							<span>造价：<em>34</em>万</span>
+						</p> -->
+						<p class="c-renzheng c-zhuzhai">
+							{volist name="filter" id="vo" }
+								<span>{$vo['setup'][$$vo['field']]}</span> | <!-- <span>现代简约</span> | <span>4室2厅1厨2卫</span> | <span>116㎡</span> -->
+							{/volist} 
+
+						</p>
+						<p class="c-renzheng c-desin"><span>设计思路：{$description}</span><!-- <span class="c-de-lv">首席设计师</span> --></p>
+						<!-- <p class="c-renzheng c-cases-intr"><em>所在区域：</em><em>贵阳市云岩区</em></p> -->
+						<p class="c-renzheng c-cases-intr"><em>浏览量：</em><em class="c-de-lv">{$hits}</em></p>
+						<p class="c-renzheng c-cases-intr"><em>装修时间：</em><em>{$createtime|date="Y-m-d",###}</em></p>
+					</div>
+				</div>
+			</div>
+			<div class="c-content clearfix">
+				<h3 class="c-cases-title"><i></i>案例详情</h3>
+				<div class="c-cases-cont">
+					<p>
+					<br/>
+					</p>
+					<p>
+						案例详情
+					</p>
+					<p>
+						{$content}
+					</p>
+					<p>	
+						<notempty name="filter">
+							{volist name="pics" id="vo" }
+								<img src="__PUBLIC__/{$vo}" alt="{$title}" />
+							{/volist}
+						</notempty>
+					</p>			
+				</div>
+			</div>
+		</div>
+	</div>
+{include file="common/sfooter"/}

@@ -1,0 +1,50 @@
+<div class="header">
+	<div class="gnav left">
+		<ul class="cf">
+			<li><a href="/" title="{$sys.name}"><span>首页</span></a></li>
+			<li><a href="{:url('home/cases/index')}" title="案例展示"><span>案例展示</span></a></li>
+			<li><a href="{:url('mall/mall/index')}" title="家居商城"><span>家居商城</span></a></li>
+			<li><a href="{:url('home/active/index')}" title="优惠活动"><span>优惠活动</span></a></li>
+			<li><a href="{:url('home/design/index')}" title="我要设计"><span>我要设计</span></a></li>
+		</ul>
+	</div>
+	<div class="logo wh">
+		<a href="/" title="{$sys.name}"><img
+			src="__HOME__/images/logo-white.png" alt="{$sys.name}" width="80"
+			height="80"></a>
+	</div>
+	<div class="logo bl">
+		<a href="/" title="{$sys.name}"><img
+			src="__HOME__/images/logo-black.png" alt="{$sys.name}" width="80"
+			height="80"></a>
+	</div>
+	<div class="gnav right">
+		<ul class="cf">
+			<!-- <li><a href="#" title="施工团队"><span>施工团队</span></a></li> -->
+			<!-- <li><a href="{:url('/home/article/news')}" title="站内新闻"><span>站内新闻</span></a></li> -->
+			<li><a href="{:url('/home/article/knowledge')}" title="装修知识"><span>装修知识</span></a></li>
+			<li><a href="{:url('/home/article/about')}" title="关于我们"><span>关于我们</span></a></li>
+			<li><a href="{:url('/home/article/about/id/31')}" title="联系我们"><span>联系我们</span></a></li>
+
+			{empty name=":session('user.user_id')"}
+				<li class="gray">
+				<a href="{:url('user/login/index')}" title="登录">登录</a>
+				</li>
+				<li class=" gray">
+					<a href="{:url('user/login/reg')}" title="注册">注册</a>
+				</li>
+			{else/}
+				<li class="gray">
+				<a href="{:url('user/user/index')}" title="{$sys.name}">传禧</a>
+				</li>
+				<li class=" gray">
+					<a href="{:url('user/user/logout')}" title="退出">退出</a>
+				</li>
+			{/empty}
+			
+
+
+		</ul>
+	</div>
+</div>
+<div class="sp_logo pjax"> <a href="/"><img src="__HOME__/images/logo-white.png" alt="{$sys.name}"></a></div>
